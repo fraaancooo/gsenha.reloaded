@@ -1,0 +1,41 @@
+﻿<Window x:Name="window_Main" x:Class="GSenha.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GSenha.UI"
+        xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+        mc:Ignorable="d"
+        Title="GSenha Reloaded" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        Background="{DynamicResource MaterialDesignPaper}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="15"
+        FontFamily="pack://application:,,,/MaterialDesignThemes.Wpf;component/Resources/Roboto/#Roboto">
+
+    <Grid x:Name="grid_Contexto" HorizontalAlignment="Left" VerticalAlignment="Top">
+        <GroupBox x:Name="groupbox_Configuracoes" HorizontalAlignment="Left" VerticalAlignment="Top" Header="Configurações" Margin="10,10,10,0">
+            <Grid x:Name="grid_Configuracoes" Width="353" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0">
+                <Label x:Name="label_Senhas" Content="Número de senhas" HorizontalAlignment="Left" Margin="6,10,0,0" VerticalAlignment="Top"/>
+                <Slider x:Name="slider_NumeroDeSenhas" HorizontalAlignment="Right" Margin="0,10,43,0" VerticalAlignment="Top" Width="119" Minimum="1" Height="26" TickPlacement="BottomRight" SmallChange="1" Value="3"/>
+                <TextBox x:Name="textbox_NumeroDeSenhas" HorizontalAlignment="Right" Height="26" Margin="0,10,10,0" TextWrapping="Wrap" Text="{Binding Value, ElementName=slider_NumeroDeSenhas, StringFormat=\{0:F0\}}" VerticalAlignment="Top" Width="22" TextAlignment="Center" IsEnabled="False"/>
+                <Label x:Name="label_Caracteres" Content="Comprimento das senhas" HorizontalAlignment="Left" Margin="6,41,0,0" VerticalAlignment="Top"/>
+                <Slider x:Name="slider_ComprimentoDasSenhas" HorizontalAlignment="Right" Margin="0,41,43,0" VerticalAlignment="Top" Width="119" Minimum="1" Height="26" TickPlacement="BottomRight" SmallChange="1" Maximum="20" Value="8"/>
+                <TextBox x:Name="textbox_ComprimentoDasSenhas" HorizontalAlignment="Right" Height="26" Margin="0,41,10,10" TextWrapping="Wrap" Text="{Binding Value, ElementName=slider_ComprimentoDasSenhas, StringFormat=\{0:F0\}}" VerticalAlignment="Top" Width="22" TextAlignment="Center" IsEnabled="False"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupbox_Opcoes" Header="Opções de Senha" HorizontalAlignment="Left" Margin="10,146,0,0" VerticalAlignment="Top">
+            <Grid x:Name="grid_Opcoes" VerticalAlignment="Top" Width="353" HorizontalAlignment="Left" Margin="0">
+                <CheckBox x:Name="checkbox_Maiusculas" Content="Maiúsculas [ABCD]" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center"/>
+                <CheckBox x:Name="checkbox_Numeros" IsChecked="True" Content="Números [1234]" HorizontalAlignment="Right" Margin="0,10,2,0" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center"/>
+                <CheckBox x:Name="checkbox_Minusculas" IsChecked="True" Content="Minúsculas [abcd]" HorizontalAlignment="Left" Margin="10,35,0,0" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center"/>
+                <CheckBox x:Name="checkbox_Especiais" Content="Especiais [$#@!]" HorizontalAlignment="Right" Margin="0,35,2,10" VerticalAlignment="Top" Width="150" VerticalContentAlignment="Center"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="button_Gerar" Content="Gerar senhas" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,270,0,0" Height="45" Click="Button_Gerar_Click"/>
+        <Button x:Name="button_Exportar" Content="Exportar arquivo" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,320,0,0" Height="45" Click="Button_Exportar_Click" IsEnabled="False"/>
+        <Button x:Name="button_Sobre" Content="Sobre" HorizontalAlignment="Left" VerticalAlignment="Top" Width="150" Margin="10,370,0,0" Height="45" Click="Button_Sobre_Click"/>
+        <TextBox x:Name="textbox_SenhasGeradas" Background="{DynamicResource MaterialDesignChipBackground}" Height="145" Margin="165,270,10,10" TextWrapping="Wrap" Width="216" VerticalScrollBarVisibility="Visible" Padding="3 0 0 0" VerticalAlignment="Top" VerticalContentAlignment="Stretch" FontFamily="Courier New"/>
+
+    </Grid>
+</Window>

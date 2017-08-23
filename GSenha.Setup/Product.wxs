@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="f504bce4-bef4-4999-9b36-7ad125846ad6" Name="GSenha Reloaded" Language="1046" Version="2.0.0.7" Manufacturer="Franco L Dalto" UpgradeCode="20fbc7dc-bc6b-4346-bcb2-7a09f1301836">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+    <Directory Id='TARGETDIR' Name='SourceDir'>
+      <Directory Id='ProgramFilesFolder' Name='PFiles'>
+        <Directory Id='Franco' Name='Franco'>
+          <Directory Id='INSTALLDIR' Name='GSenha Reloaded'>
+            <Component Id='MainExecutable' Guid='121c1c81-a938-4e7e-8355-944abe212a09'>
+              <File Id='GSenhaReloadedEXE' Name='GSenha Reloaded.exe' DiskId='1' Source='$(var.GSenha.GUI.TargetPath)' KeyPath='yes'>
+                <Shortcut Id="startmenuGSenha" Directory="ProgramMenuDir" Name="GSenha Reloaded" WorkingDirectory='INSTALLDIR' Icon="GSenha.exe" Advertise="yes" />
+                <Shortcut Id="desktopGSenha" Directory="DesktopFolder" Name="GSenha Reloaded" WorkingDirectory='INSTALLDIR' Icon="GSenha.exe" Advertise="yes" />
+              </File>
+            </Component>
+          </Directory>
+        </Directory>
+      </Directory>
+      <Directory Id="ProgramMenuFolder" Name="Programs">
+        <Directory Id="ProgramMenuDir" Name="GSenha Reloaded">
+          <Component Id="ProgramMenuDir" Guid="b768ceb9-53f3-4048-88a2-5dd86a688406">
+            <RemoveFolder Id='ProgramMenuDir' On='uninstall' />
+            <RegistryValue Root='HKCU' Key='Software\[Manufacturer]\[ProductName]' Type='string' Value='' KeyPath='yes' />
+          </Component>
+        </Directory>
+      </Directory>
+
+      <Directory Id="DesktopFolder" Name="Desktop" />
+    </Directory>
+
+    <Feature Id='Complete' Level='1'>
+      <ComponentRef Id='MainExecutable' />
+      <ComponentRef Id='ProgramMenuDir' />
+    </Feature>
+
+    <Icon Id="GSenha.exe" SourceFile="$(var.GSenha.GUI.TargetPath)" />
+  
+  </Product>
+</Wix>
